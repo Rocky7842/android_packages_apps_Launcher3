@@ -95,7 +95,7 @@ object WorkspaceProfileNonResponsiveFactory {
                     /*Left */
                     desiredWorkspaceHorizontalMarginPx,
                     /*Top */
-                    workspaceTopPadding + (if (isScalableGrid) 0 else edgeMarginPx),
+                    workspaceTopPadding + edgeMarginPx,
                     /*Right */
                     desiredWorkspaceHorizontalMarginPx,
                     /*Bottom */

@@ -330,8 +330,7 @@ data class WorkspaceProfile(
                     val padding =
                         Rect(
                             /* left */ desiredWorkspaceHorizontalMarginPx,
-                            /* top */ (workspaceTopPadding +
-                                (if (isScalableGrid) 0 else edgeMarginPx)),
+                            /* top */ (workspaceTopPadding + edgeMarginPx),
                             /* right */ desiredWorkspaceHorizontalMarginPx,
                             /* bottom */ (hotseatBarSizePx + workspaceBottomPadding - insets.bottom),
                         )
