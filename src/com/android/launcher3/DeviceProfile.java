@@ -1458,7 +1458,7 @@ public class DeviceProfile {
         int overviewActionsSpace = mDeviceProperties.isTablet() && enableGridOnlyOverview()
                 ? 0
                 : (overviewProfile.getActionsTopMarginPx() + overviewProfile.getActionsHeight());
-        return overviewActionsSpace + memInfoHeight + getOverviewActionsClaimedSpaceBelow();
+        return overviewActionsSpace + getOverviewActionsClaimedSpaceBelow();
     }
 
     /**
