@@ -133,6 +133,7 @@ data class WorkspaceProfile(
         hotseatBarBottomSpacePx: Int,
         hotseatQsbSpace: Int,
         inv: InvariantDeviceProfile,
+        isQsbVisible: Boolean
     ): WorkspaceProfile {
         val noInsetWorkspacePadding =
             WorkspaceProfileNonResponsiveFactory.createWorkspacePadding(
@@ -151,6 +152,7 @@ data class WorkspaceProfile(
                 hotseatBarBottomSpacePx = hotseatBarBottomSpacePx,
                 hotseatQsbSpace = hotseatQsbSpace,
                 iconSize = iconSizePx,
+                isQsbVisible = isQsbVisible
             )
         val cellLayoutPadding =
             when {
@@ -253,6 +255,7 @@ data class WorkspaceProfile(
             hotseatBarBottomSpacePx: Int,
             hotseatQsbSpace: Int,
             isQsbInline: Boolean,
+            isQsbVisible: Boolean
         ): Int {
             return when {
                 isVerticalLayout -> {
@@ -264,10 +267,11 @@ data class WorkspaceProfile(
                     (max(iconSizePx, hotseatProfile.qsbVisualHeight) + hotseatBarBottomSpacePx)
                 }
                 else -> {
-                    (iconSizePx +
-                        hotseatQsbSpace +
-                        hotseatProfile.qsbVisualHeight +
-                        hotseatBarBottomSpacePx)
+                    var size = iconSizePx + hotseatBarBottomSpacePx
+                    if (isQsbVisible) {
+                        size += hotseatQsbSpace + hotseatProfile.qsbVisualHeight
+                    }
+                    size
                 }
             }
         }
@@ -289,6 +293,7 @@ data class WorkspaceProfile(
             hotseatBarBottomSpacePx: Int,
             hotseatQsbSpace: Int,
             iconSize: Int,
+            isQsbVisible: Boolean
         ): Rect {
             // TODO : This is to update updateHotseatSizes, we need a better way to do
             // this
@@ -301,6 +306,7 @@ data class WorkspaceProfile(
                     hotseatBarBottomSpacePx = hotseatBarBottomSpacePx,
                     hotseatQsbSpace = hotseatQsbSpace,
                     isQsbInline = isQsbInline,
+                    isQsbVisible = isQsbVisible
                 )
 
             when {
@@ -367,6 +373,7 @@ data class WorkspaceProfile(
             hotseatBarBottomSpacePx: Int,
             hotseatQsbSpace: Int,
             panelCount: Int,
+            isQsbVisible: Boolean
         ): WorkspaceProfile {
 
             val cellLayoutBorderSpacePx =
@@ -452,6 +459,7 @@ data class WorkspaceProfile(
                     iconSize = iconSizePx,
                     hotseatQsbSpace = hotseatQsbSpace,
                     isQsbInline = isQsbInline,
+                    isQsbVisible = isQsbVisible
                 )
 
             val (workspacePadding, cellLayoutPaddingPx) =
@@ -557,6 +565,7 @@ data class WorkspaceProfile(
             hotseatBarBottomSpacePx: Int,
             hotseatQsbSpace: Int,
             hotseatBarSizePx: Int,
+            isQsbVisible: Boolean
         ): WorkspaceProfile {
             // Icon scale should never exceed 1, otherwise pixellation may occur.
             val iconScale = min(1f, scale)
@@ -586,6 +595,7 @@ data class WorkspaceProfile(
                         hotseatQsbSpace = hotseatQsbSpace,
                         isQsbInline = isQsbInline,
                         panelCount = panelCount,
+                        isQsbVisible = isQsbVisible
                     )
 
                 else ->
@@ -608,6 +618,7 @@ data class WorkspaceProfile(
                         hotseatBarBottomSpacePx = hotseatBarBottomSpacePx,
                         hotseatQsbSpace = hotseatQsbSpace,
                         hotseatBarSizePx = hotseatBarSizePx,
+                        isQsbVisible = isQsbVisible
                     )
             }
         }
