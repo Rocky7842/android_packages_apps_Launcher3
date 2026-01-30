@@ -346,7 +346,7 @@ public class DeviceProfile {
                 .Factory
                 .createDropTargetProfile(res, shouldApplyWidePortraitDimens);
 
-        isQsbVisible = Utilities.showQSB(context);
+        isQsbVisible = Utilities.showQSB(context) && LauncherPrefs.SHOW_QUICKSPACE.get(context);
 
         numShownHotseatIcons = displayOptionSpec.numShownHotseatIcons;
         mHotseatColumnSpan = inv.numColumns;

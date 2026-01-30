@@ -843,7 +843,7 @@ class WorkspaceItemProcessorTest {
             )
         val maybeReservesSpaceForQsb: (ArrayList<WorkspaceItemInfo>) -> Boolean = { addItemsFinal ->
             val idp = InvariantDeviceProfile.INSTANCE.get(mContext)
-            !qsbOnFirstScreen() ||
+            !qsbOnFirstScreen(mContext) ||
                 addItemsFinal.any {
                     with(it) {
                         cellX == 0 &&

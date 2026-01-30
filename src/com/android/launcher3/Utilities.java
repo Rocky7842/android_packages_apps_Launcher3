@@ -168,8 +168,8 @@ public final class Utilities {
     @Deprecated
     public static final boolean IS_DEBUG_DEVICE = BuildConfig.IS_DEBUG_DEVICE;
 
-    public static boolean qsbOnFirstScreen() {
-        return BuildConfig.USE_QUICKSPACE_VIEW;
+    public static boolean qsbOnFirstScreen(Context context) {
+        return BuildConfig.USE_QUICKSPACE_VIEW && LauncherPrefs.SHOW_QUICKSPACE.get(context);
     }
 
     public static final int TRANSLATE_UP = 0;
